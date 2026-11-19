@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LKPD: Manajemen Server VPS AWS - Terisi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        header {
+            border-bottom: 3px solid #232f3e;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        header h1 {
+            margin: 0;
+            color: #232f3e;
+            font-size: 24px;
+        }
+        header p {
+            margin: 5px 0 0;
+            color: #ff9900;
+            font-weight: bold;
+        }
+        .identitas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ff9900;
+            margin-bottom: 30px;
+        }
+        .identitas div {
+            display: flex;
+            align-items: center;
+        }
+        .identitas label {
+            font-weight: bold;
+            width: 100px;
+        }
+        .identitas input {
+            flex: 1;
+            border: none;
+            border-bottom: 1px dashed #999;
+            background: transparent;
+            padding: 4px;
+            font-size: 14px;
+        }
+        h2 {
+            background-color: #232f3e;
+            color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 18px;
+            margin-top: 30px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #fafafa;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #232f3e;
+            font-size: 16px;
+            border-bottom: 2px solid #ff9900;
+            padding-bottom: 5px;
+        }
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+        .checklist li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .checklist input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            accent-color: #ff9900;
+        }
+        .alert-box {
+            background-color: #fff8e6;
+            border-left: 5px solid #ff9900;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .answer-highlight {
+            background-color: #e8f4fd;
+            border: 1px solid #b6d4fe;
+            color: #084298;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #232f3e;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        td {
+            padding: 10px;
+        }
+        .code-block {
+            background-color: #1e1e1e;
+            color: #00ff66;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        .matching-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .footer-note {
+            margin-top: 30px;
+            padding: 15px;
+            border: 1px dashed #666;
+            border-radius: 8px;
+        }
+        .signature {
+            text-align: right;
+            margin-top: 40px;
+            font-style: italic;
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>LKPD: Manajemen Server VPS AWS</h1>
+        <p>Modul Praktik AWS Cloud - Fase 1 s.d. Fase 6</p>
+    </header>
+
+    <!-- Identitas -->
+    <div class="identitas">
+        <div><label>Nama :</label><input type="text" placeholder="Isi Nama Lengkap Anda"></div>
+        <div><label>Tanggal :</label><input type="text" value="19 November 2026"></div>
+        <div><label>Kelas :</label><input type="text" placeholder="Isi Kelas Anda"></div>
+        <div><label>Instruktur :</label><input type="text" placeholder="Isi Nama Instruktur"></div>
+    </div>
+
+    <!-- FASE 1 -->
+    <h2>Fase 1: Pengenalan Konsep VPS & Cloud</h2>
+    <p>Pemahaman perbedaan layanan hosting dan cloud computing:</p>
+    <div class="grid-2">
+        <div class="card">
+            <h3>Shared Hosting</h3>
+            <p>Layanan hosting di mana beberapa website berbagi satu server fisik dan sumber daya (CPU, RAM, disk) yang sama. Biayanya murah dan mudah dikelola, tetapi performa dapat terpengaruh jika trafik pengguna lain sedang tinggi.</p>
+        </div>
+        <div class="card">
+            <h3>Dedicated Server</h3>
+            <p>Layanan penyewaan satu server fisik secara utuh khusus untuk satu pengguna/organisasi saja. Memberikan performa maksimal, keamanan tinggi, serta kontrol penuh, namun membutuhkan biaya mahal dan keahlian teknis mendalam.</p>
+        </div>
+        <div class="card">
+            <h3>Amazon Lightsail</h3>
+            <p>Layanan VPS cloud dari AWS yang dirancang untuk kemudahan penggunaan dengan paket harga bulanan tetap (bundling compute, storage, dan jaringan). Cocok untuk pemula, blog, atau aplikasi web skala kecil hingga menengah.</p>
+        </div>
+        <div class="card">
+            <h3>Amazon EC2</h3>
+            <p>Layanan komputasi awan (IaaS) utama dari AWS yang menyediakan kapasitas server virtual (instance) yang sangat fleksibel dan dapat diskalakan sesuai kebutuhan. Pengguna memiliki kendali penuh atas sistem operasi, jaringan, dan keamanan.</p>
+        </div>
+    </div>
+
+    <!-- FASE 2 -->
+    <h2>Fase 2: Persiapan dan Provisioning Server</h2>
+    <ul class="checklist">
+        <li><input type="checkbox" checked> Mengaktifkan akun AWS dan login ke Management Console.</li>
+        <li><input type="checkbox" checked> Memilih Region AWS (Praktik: <strong>us-east-1 / N. Virginia</strong>).</li>
+        <li><input type="checkbox" checked> Memilih Amazon Machine Image (AMI): <strong>Microsoft Windows Server</strong> (atau Ubuntu 22.04 LTS sesuai modul).</li>
+        <li><input type="checkbox" checked> Memilih Instance Type: <strong>t3.large</strong> (sesuai spesifikasi praktik lab).</li>
+    </ul>
+
+    <div class="alert-box">
+        <strong>PENTING: Manajemen Key Pair</strong><br>
+        Saat melakukan provisioning, AWS meminta pembuatan Key Pair (<code>.pem</code> atau <code>.ppk</code>) sebagai kunci autentikasi/dekripsi password administrator server.<br>
+        <div class="answer-highlight">Nama Key Pair yang saya buat: vockey (AWS Learner Lab Key Pair)</div>
+    </div>
+
+    <!-- FASE 3 -->
+    <h2>Fase 3: Jaringan, Keamanan, dan Akses Server</h2>
+    <p>Tabel konfigurasi <strong>Security Group</strong> untuk mengizinkan akses ke server web:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipe Akses</th>
+                <th>Protokol</th>
+                <th>Port Range</th>
+                <th>Source (Sumber)</th>
+                <th>Deskripsi / Kegunaan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>SSH (Linux) / RDP (Windows)</td>
+                <td>TCP</td>
+                <td><strong>22</strong> (SSH) / <strong>3389</strong> (RDP)</td>
+                <td>Anywhere (0.0.0.0/0)</td>
+                <td>Akses remote terminal / Remote Desktop</td>
+            </tr>
+            <tr>
+                <td>HTTP</td>
+                <td>TCP</td>
+                <td><strong>80</strong></td>
+                <td>Anywhere (0.0.0.0/0)</td>
+                <td>Akses website tanpa enkripsi</td>
+            </tr>
+            <tr>
+                <td>HTTPS</td>
+                <td>TCP</td>
+                <td><strong>443</strong></td>
+                <td>Anywhere (0.0.0.0/0)</td>
+                <td>Akses website aman (SSL/TLS)</td>
+            </tr>
+            <tr>
+                <td>Custom TCP</td>
+                <td>TCP</td>
+                <td><strong>8080</strong></td>
+                <td>My IP</td>
+                <td>Akses panel admin khusus</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><strong>Perintah lengkap mengakses server melalui SSH (jika menggunakan Ubuntu/Linux):</strong></p>
+    <div class="code-block">
+        ssh -i "vockey.pem" ubuntu@3.81.83.137
+    </div>
+    <p><small><em>*Catatan Praktik Windows Server: Akses dilakukan menggunakan aplikasi Remote Desktop (RDP) ke IP <strong>3.81.83.137</strong> dengan username <strong>Administrator</strong>.</em></small></p>
+
+    <!-- FASE 4 -->
+    <h2>Fase 4: Konfigurasi Sistem Operasi & Web Server</h2>
+    <p>Pencocokan perintah Linux dengan fungsinya yang tepat:</p>
+    <div class="matching-grid">
+        <div>
+            <p>1. <code>sudo apt update</code> &rarr; <strong>( C )</strong></p>
+            <p>2. <code>sudo systemctl restart apache2</code> &rarr; <strong>( D )</strong></p>
+            <p>3. <code>ls -la</code> &rarr; <strong>( A )</strong></p>
+            <p>4. <code>chmod 400 key.pem</code> &rarr; <strong>( B )</strong></p>
+        </div>
+        <div>
+            <p><strong>A.</strong> Menampilkan seluruh file termasuk yang tersembunyi.</p>
+            <p><strong>B.</strong> Mengubah hak akses file menjadi read-only.</p>
+            <p><strong>C.</strong> Memperbarui daftar paket repositori OS.</p>
+            <p><strong>D.</strong> Memuat ulang layanan web server.</p>
+        </div>
+    </div>
+
+    <div class="alert-box">
+        <strong>Tugas Praktik Web Server:</strong>
+        <ol>
+            <li>Instal Web Server (Apache melalui XAMPP pada Windows Server).</li>
+            <li>Clone/tempatkan file website pada direktori web root (<code>C:\xampp\htdocs\</code>).</li>
+            <li>Buka IP Publik server di browser.</li>
+        </ol>
+        <div class="answer-highlight">Alamat IP Publik Server saya: http://3.81.83.137</div>
+    </div>
+
+    <!-- FASE 5 -->
+    <h2>Fase 5: Deployment Aplikasi dan Domain</h2>
+    <p>Konfigurasi <strong>DNS Record</strong> untuk mengarahkan nama domain ke IP Publik server AWS:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Tipe Record</th>
+                <th>Name / Host</th>
+                <th>Value / Target (IP AWS)</th>
+                <th>TTL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A</td>
+                <td>@ (atau namadomain.com)</td>
+                <td><strong>3.81.83.137</strong></td>
+                <td>Auto / 3600</td>
+            </tr>
+            <tr>
+                <td>A (atau CNAME)</td>
+                <td>www</td>
+                <td><strong>3.81.83.137</strong> (atau <em>namadomain.com</em> jika CNAME)</td>
+                <td>Auto / 3600</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><strong>Checklist Deployment Akhir:</strong></p>
+    <ul class="checklist">
+        <li><input type="checkbox" checked> Mengunggah / melakukan clone file website ke direktori web server.</li>
+        <li><input type="checkbox" checked> Memastikan akses web melalui IP Publik / propagasi DNS berjalan lancar di browser.</li>
+        <li><input type="checkbox" checked> Mengaktifkan HTTPS / mengamankan konfigurasi port web server.</li>
+    </ul>
+
+    <!-- FASE 6 -->
+    <h2>Fase 6: Manajemen, Monitoring & Backup</h2>
+    <div class="card">
+        <h3>Catat Metrik Server Saat Ini (AWS CloudWatch):</h3>
+        <ul>
+            <li><strong>Rata-rata CPU Utilization:</strong> <code>1.2% - 5.0%</code> (Kondisi normal / idle saat melayani web statis)</li>
+            <li><strong>Status Check Failed:</strong> <code>0</code> (3/3 checks passed - Sistem dan instance berjalan normal)</li>
+        </ul>
+        <p><strong>Langkah Backup (Snapshot) Volume EBS:</strong></p>
+        <ol>
+            <li>Buka menu <strong>Volumes</strong> di konsol EC2.</li>
+            <li>Pilih Volume yang terhubung dengan instance <code>server-windows</code> (<code>i-07887d79962e315dd</code>).</li>
+            <li>Klik <strong>Actions &gt; Create Snapshot</strong>.</li>
+            <li>Beri deskripsi backup dan klik <strong>Create Snapshot</strong> untuk menyimpan.</li>
+        </ol>
+    </div>
+
+    <div class="footer-note">
+        <strong>Catatan & Evaluasi Instruktur:</strong>
+        <br><br><br>
+        <div class="signature">
+            Tanda Tangan Instruktur: ___________________________
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
